@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 import multer from "multer";
 import helmet from "helmet";
 import morgan from "morgan";
+import userRoutes from "./routes/users.js";
 import path from "path";
 import { fileURLToPath } from "url";
 import authRoutes from "./routes/auth.js";
@@ -46,7 +47,8 @@ const upload = multer({ storage });
 app.post("/auth/register", upload.single("picture"), register);
 
 //routes:
-app.use("/auth", authRoutes)
+app.use("/auth", authRoutes);
+app.use("/users", userRoutes);
 
 //MONGOOSE SETUP
 const PORT = process.env.PORT || 6001;
