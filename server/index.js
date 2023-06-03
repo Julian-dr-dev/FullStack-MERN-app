@@ -11,7 +11,9 @@ import path from "path";
 import { fileURLToPath } from "url";
 import authRoutes from "./routes/auth.js";
 import { register } from "./controllers/auth.js";
-
+import postRoutes from"./routes/posts.js";
+import {verifyToken} from "./middleware/auth.js";
+import { createPost } from "./controllers/post.js";
 
 //configuring the directory and file paths
 const __filename = fileURLToPath(import.meta.url);
@@ -45,10 +47,12 @@ const upload = multer({ storage });
 
 //routes w/ files
 app.post("/auth/register", upload.single("picture"), register);
+app.post("/posts", verifyToken, uload.single("userPost"), createPost);
 
 //routes:
 app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
+app.use("/posts", postRoutes);
 
 //MONGOOSE SETUP
 const PORT = process.env.PORT || 6001;
