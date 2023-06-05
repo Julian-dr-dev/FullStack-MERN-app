@@ -5,7 +5,7 @@ const postSchema = mongoose.Schema(
         userId: {
             type: String,
             required: true,
-            },
+        },
         firstName: {
             type: String,
             required: true,
@@ -27,9 +27,9 @@ const postSchema = mongoose.Schema(
             default: []
         }
     },
-        {timestamps: true}
+    {timestamps: true}
 );
 
-    const Post = mongoose.model("Post", postSchema);
+const Post = mongoose.model("Post", postSchema);
 
-    export default Post;
+export default Post;

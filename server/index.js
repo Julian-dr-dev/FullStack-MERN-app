@@ -50,7 +50,7 @@ const upload = multer({ storage });
 
 //routes w/ files
 app.post("/auth/register", upload.single("picture"), register);
-app.post("/posts", verifyToken, uload.single("userPost"), createPost);
+app.post("/posts", verifyToken, upload.single("userPost"), createPost);
 
 //routes:
 app.use("/auth", authRoutes);
@@ -69,4 +69,3 @@ mongoose.connect(process.env.MONGO_URL, {
     //User.insertMany(users);
     //Post.insertMany(posts);
 }).catch((error) => console.log(`${error} did not connect`));
-

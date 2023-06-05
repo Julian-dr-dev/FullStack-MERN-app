@@ -48,7 +48,7 @@ export const register = async (req, res) => {
 
     }
 
-    
+
 };
 
 //login function
