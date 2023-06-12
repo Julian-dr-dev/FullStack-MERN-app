@@ -12,10 +12,10 @@ import {
     REHYDRATE,
     PAUSE,
     PERSIST,
-    PRUGE,
+    PURGE,
     REGISTER
 } from "redux-persist"
-import sotrage from "redux-persist/lib/storage";
+import storage from "redux-persist/lib/storage";
 import { PersistGate } from "redux-persist/integration/react";
 
 const persistConfig = { key: "root", storage, version: 1};
@@ -37,7 +37,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
       <Provider store={store}>
-          <PersistGate loading={null} persistor={persistorStore(store)}>
+          <PersistGate loading={null} persistor={persistStore(store)}>
           <App />
           </PersistGate>
       </Provider>
