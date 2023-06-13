@@ -67,14 +67,31 @@ const navBar = () => {
             </Typography>
             {isNonMobileScreens && (
                 <FlexBetween bakcgroundColor={neutralLight} borderRadius="9px" gap="3rem" padding="0.1rem 1.5rem">
-                    <InputBase>
-
-                    </InputBase>
-
+                    <InputBase placeholder="Search"/>
+                    <IconButton>
+                        <Search />
+                    </IconButton>
                 </FlexBetween>
             )}
         </FlexBetween>
+        {isNonMobileScreens ? (
+            <FlexBetween gap="2rem">
+                <IconButton onClick={() => dispatch(setMode())}>
+                    {theme.palette.mode === "dark" ? (
+                        <DarkMode sx={{fontSize:"25px"}} />
+                    ): (
+                        <LightMode sx={{ color: dark, fontSize: "25px"}} />
+                    )}
+                </IconButton>
+                <Message sx={{fontSize: "25px"}}/>
+                <Notifications sx={{fontSize: "25px"}}/>
+                <Help sx={{fontSize: "25px"}}/>
+                <FormControl variant="standard" value=""><FormControl/>
+            </FlexBetween>
+        ) : (
+            <IconButton></IconButton>
+        )}
 
-    </FlexBetween>;
+        </FlexBetween>;
 }
 export default navBar;
