@@ -1,9 +1,11 @@
 
 import { Box } from "@mui/material";
-import NavBar from "../navBar";
+//import { useSelector } from "react-redux";
+import Navbar from "scenes/navbar";
+
 const HomePage = () => {
     return <Box>
-        <NavBar />
+        <Navbar />
     </Box>
 }
 export default HomePage;
