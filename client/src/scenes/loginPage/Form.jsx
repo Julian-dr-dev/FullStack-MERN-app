@@ -188,7 +188,7 @@ const Form = () => {
                                     borderRadius="5px"
                                     padding="1rem"
                                 >
-                                    <DropZone
+                                    <Dropzone
                                         acceptedFiles=".jpeg,.jpeg,.png"
                                         multiple={false}
                                         onDrop={(acceptedFiles) =>
@@ -215,7 +215,7 @@ const Form = () => {
                                                 )}
                                             </Box>
                                         )}
-                                    </DropZone>
+                                    </Dropzone>
                                 </Box>
                             </>
                         )}
