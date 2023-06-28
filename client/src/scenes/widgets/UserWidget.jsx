@@ -1,8 +1,8 @@
 import {
-    ManagedAccountsOutlined,
+    ManageAccountsOutlined,
     EditOutlined,
     LocationOnOutlined,
-    workOutlineOutlined,
+    WorkOutlineOutlined,
 } from "@mui/icons-material"
 
 import { Box, Typography, Divider, useTheme } from "@mui/material";
@@ -13,15 +13,7 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const UserWidget = ({ userId, picturePath }) => {
-    const [user, setUser] = useState(null);
-    const { palette } = useTheme();
-    const navigate = useNavigate();
-    const token = useSelector((state) => state.token);
-    const dark = palette.neutral.dark;
-    const medium = palette.neutral.medium;
-    const main = palette.neutral.main;
-}
+
 
 
 const UserWidget = ({ userId, picturePath }) => {
@@ -43,7 +35,7 @@ const UserWidget = ({ userId, picturePath }) => {
         setUser(data);
 
     };
-    useEffeect(() => {
+    useEffect(() => {
         getUser();
 
     }, [])
@@ -89,7 +81,7 @@ const UserWidget = ({ userId, picturePath }) => {
                     </Box>
 
                 </FlexBetween>
-                <ManagedAccountsOutlined />
+                <ManageAccountsOutlined />
             </FlexBetween>
 
                 <Divider />
@@ -128,7 +120,7 @@ const UserWidget = ({ userId, picturePath }) => {
 
                     </Typography>
                     <FlexBetween gap="1rem" mb="0.5rem">
-                        <FlexBetwee gap="1rem">
+                        <FlexBetween gap="1rem">
                             <img srx="../assets/twitter.png" alt="twitter" />
                             <Box>
                                 <Typography color={main} fontWeight="500">
@@ -138,14 +130,14 @@ const UserWidget = ({ userId, picturePath }) => {
 
                             </Box>
 
-                        </FlexBetwee>
+                        </FlexBetween>
                         <EditOutlined sx={{color: main}} />
                     </FlexBetween>
 
 
 
                     <FlexBetween gap="1rem">
-                        <FlexBetwee gap="1rem">
+                        <FlexBetween gap="1rem">
                             <img srx="../assets/linkedin.png" alt="linkedin" />
                             <Box>
                                 <Typography color={main} fontWeight="500">
@@ -155,7 +147,7 @@ const UserWidget = ({ userId, picturePath }) => {
 
                             </Box>
 
-                        </FlexBetwee>
+                        </FlexBetween>
                         <EditOutlined sx={{color: main}} />
                     </FlexBetween>
 
