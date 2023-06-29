@@ -53,6 +53,130 @@ const MyPostWidget = ({picturePath}) => {
         dispatch(setPosts({ posts }));
         setImage(null);
         setPost("");
-    }
+    };
 
-}
+
+    return (
+        <WidgetWrapper>
+            <FLexBetween gap="1.5rem">
+                <UserImage image={picturePath}/>
+                <InputBase
+                    placeholder="Whats the happs..."
+                    onChange={(e) => setPosts(e.target.value)}
+                    value={post}
+                    sx={{
+                        width:"100%",
+                        backgroundColor: palette.neutral.light,
+                        borderRadius: "2rem",
+                        padding: "1rem 2rem"
+                    }}
+                />
+
+            </FLexBetween>
+            {isImage && (
+                <Box
+                    border={`1px solid ${medium}`}
+                    borderRadius="5px"
+                    mt="1rem"
+                    p="1rem"
+                >
+                    <Dropzone
+                        acceptedFiles=".jpeg,.jpeg,.png"
+                        multiple={false}
+                        onDrop={(acceptedFiles) =>
+                            setImage( acceptedFiles[0])
+                        }
+                    >
+
+                        {({ getRootProps, getInputProps }) => (
+                            <FlexBetween>
+                            <Box
+                                {...getRootProps()}
+                                border={`2px dashed ${palette.primary.main}`}
+                                p="1rem"
+                                width="100%"
+                                sx={{ "&:hover": { cursor: "pointer"} }}
+
+                            >
+                                <input {...getInputProps()} />
+                                {!image? (
+                                    <p>Add image here</p>
+                                ) : (
+                                    <FlexBetween>
+                                        <Typography>{image.name}</Typography>
+                                        <EditOutlinedIcon/>
+                                    </FlexBetween>
+                                )}
+                            </Box>
+                                {image && (
+                                    <IconButton
+                                        onClick={() => setImage(null)}
+                                        sx={{ width: "15%"}}
+                                    >
+                                    <DeleteOutlined/>
+                                    </IconButton>
+                                )}
+                            </FlexBetween>
+                        )}
+                    </Dropzone>
+
+                </Box>
+            )}
+            <Divider sx={{ margin: "1.25rem 0"}} />
+
+            <FlexBetween>
+                <FlexBetween>
+                    <FlexBetween gap="0.25rem" onClick={() => setIsImage(!isImage)}>
+                        <ImageOutlined sx={{ color: mediumMain }}/>
+                        <Typography
+                            color={mediumMain}
+                            sx={{ "&:hover": { cursor: "pointer", color: medium }}}
+                        >
+                            Image
+
+                        </Typography>
+                    </FlexBetween>
+                </FlexBetween>
+
+
+
+
+                {isNonMobileScreens ? (
+                    <>
+                        <FlexBetween gap="0.25rem">
+                            <GifBoxOutlined sx={{ color: mediumMain}} />
+                            <Typography color={mediumMain}>Clip</Typography>
+                        </FlexBetween>
+
+
+                        <FlexBetween gap="0.25rem">
+                            <AttachFileOutlined sx={{ color: mediumMain}} />
+                            <Typography color={mediumMain}>Attachment</Typography>
+                        </FlexBetween>
+
+
+                        <FlexBetween gap="0.25rem">
+                            <MicOutlined sx={{ color: mediumMain}} />
+                            <Typography color={mediumMain}>Audio</Typography>
+                        </FlexBetween>
+
+
+                    </>
+                ) : (
+                    <FlexBetween ga="0.25rem">
+                    <MoreHorizOutlined sx={{ color: mediumMain}} />
+                </FlexBetween>
+                    )}
+            </FlexBetween>
+        </WidgetWrapper>
+    );
+
+};
+
+
+
+
+
+
+
+
