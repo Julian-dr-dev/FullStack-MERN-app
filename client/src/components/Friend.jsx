@@ -5,8 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { setFriends } from "state";
 import FlexBetween from "./FlexBetween";
 import userImage from "./UserImage";
-import {useNavigate} from "react-router-dom";
-import UserImage from "../../components/UserImage";
+import UserImage from "./UserImage";
 
 
 
@@ -27,7 +26,7 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
 
     const patchFriend = async () => {
         const response = await fetch(
-            `http://localhost:3001/users/${id}/${friendId}`,
+            `http://localhost:3001/users/${_id}/${friendId}`,
             {
                 method: "PATCH",
                 headers: {
@@ -44,9 +43,9 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
             <FlexBetween gap="1rem">
                 <UserImage image={userPicturePath} size="55px" />
                 <Box
-                onClick{() => {
-                    navigate(`/profile/${friendId}`);
-                    navigate(0);
+                    onClick={() => {
+                        navigate(`/profile/${friendId}`);
+                        navigate(0);
                 }}
                 >
                     <Typography
